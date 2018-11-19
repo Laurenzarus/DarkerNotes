@@ -8,7 +8,6 @@ $('#notification-button').click(function() {
     $(this).popover('hide');
 });
 
-
 function loadNotifications() {
 	var emailIn = sessionStorage.getItem("email");	
 	$.ajax({
@@ -36,10 +35,14 @@ function loadNotifications() {
 			    	   })
 		    	   }
 	    	   );
-	    	   
+	    	   if ($("#notification-content").text() == "No new files") {
+	    		   $("#notification-active").css("display", "none");
+	    	   }
+	    	   else {
+	    		   $("#notification-active").css("display", "inline");
+	    	   }
 	       }
 	});
-	
 }
 
 // animation for wiggling notification
